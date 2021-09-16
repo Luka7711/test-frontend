@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import Registration from "./components/Forms/Registration";
+import User from './User';
+import axios from 'axios';
 
 function App() {
+  const [count, setCount] = useState(2);
+  const [count2, setCount2] = useState(3); 
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, [])
+
+  const getUsers = async() => {
+    const response = await axios("http://localhost:9000/", {
+      method: "GET"
+    });
+    setUsers(response.data.users);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <User users={users}/>
+      <Registration/>
     </div>
   );
 }
