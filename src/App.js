@@ -1,28 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import Registration from "./components/Forms/Registration";
-import User from './User';
-import axios from 'axios';
+import React from "react";
+import List from "./components/List";
 
 function App() {
-  const [count, setCount] = useState(2);
-  const [count2, setCount2] = useState(3); 
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    getUsers();
-  }, [])
-
-  const getUsers = async() => {
-    const response = await axios("http://localhost:9000/", {
-      method: "GET"
-    });
-    setUsers(response.data.users);
-  }
-
   return (
-    <div className="App">
-      <User users={users}/>
-      <Registration/>
+    <div className="App" style={{ margin: "30px auto", width: "1000px" }}>
+      <List />
     </div>
   );
 }

@@ -1,68 +1,126 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import qs from 'qs';
+import React, { useState } from "react";
 
-const Registration = () => {
-	const [username, setUsername] = useState("");
-	const [car, setCar] = useState("");
-	const [price, setPrice] = useState(0);
+const Registration = ({ setData }) => {
+  const [username, setUsername] = useState("");
+  const [car, setCar] = useState("");
+  const [price, setPrice] = useState(0);
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState();
 
+  const registerStyle = {
+    width: "300px",
+    padding: "20px",
+    border: "1px solid #eee",
+    backgroundColor: "#fab",
+  };
 
-	const handleChange = (e) => {
-		switch(e.target.name) {
-			case "username":
-			setUsername(e.target.value)
-			break;
+  const inputStyle = {
+    marginTop: "30px",
+  };
 
-			case "car":
-			setCar(e.target.value)
-			break;
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case "username":
+        setUsername(e.target.value);
+        break;
 
-			case "price":
-			setPrice(e.target.value)
+      case "car":
+        setCar(e.target.value);
+        break;
 
-			default:
-			break;
-		}
-	}
+      case "price":
+        setPrice(e.target.value);
+        break;
 
-	const formSubmit = async(e) => {
-		e.preventDefault();
-		const response = await fetch("http://localhost:9000/new-data", {
-			method:"POST",
-			headers: {
-    			'Accept': 'application/json',
-    			'Content-Type': 'application/json',
-  			},
-			body: JSON.stringify({username: username, car:car, price:price})
-		});
-	}
+      default:
+        break;
+    }
+  };
 
-	useEffect(() => {
-		console.log(username, car, price);
-	})
+  const create = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:9000/new-data", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: username, car: car, price: price }),
+    });
+    response.json().then((data) => {
+      setData(data.message);
+    });
+  };
 
-	return (
-		<div>
-			<form onSubmit={formSubmit}>
-				<label>
-					Username:
-					<input type="text" name="username" onChange={handleChange} value={username}/>
-				</label>
-				<br/>
-				<label>
-					Car Model:
-					<input type="text" name="car" onChange={handleChange} value={car}/>
-				</label>
-				<br/>
-				<label>
-					Price:
-					<input type="text" name="price" onChange={handleChange} value={price}/>
-				</label>
-				<input type="submit"/>
-			</form>
-		</div>
-	)
-}
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      console.log(reader.result, "event");
+      setPreviewSource(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  return (
+    <div style={registerStyle}>
+      <h4>Register new car</h4>
+      <form onSubmit={create}>
+        <label>
+          Username:
+          <input
+            type="text"
+            name="username"
+            onChange={handleChange}
+            value={username}
+            style={inputStyle}
+          />
+        </label>
+        <br />
+        <label>
+          Car Model:
+          <input
+            style={inputStyle}
+            type="text"
+            name="car"
+            onChange={handleChange}
+            value={car}
+          />
+        </label>
+        <br />
+        <label>
+          Price:
+          <input
+            type="text"
+            name="price"
+            onChange={handleChange}
+            value={price}
+            style={inputStyle}
+          />
+        </label>
+        <br />
+        {previewSource && (
+          <img
+            style={{ width: "100%", marginTop: "20px" }}
+            src={previewSource}
+            alt="chosen"
+          />
+        )}
+        <input
+          type="file"
+          name="file"
+          value={fileInputState}
+          onChange={handleFileInputChange}
+        />
+        <input type="submit" />
+      </form>
+    </div>
+  );
+};
 
 export default Registration;
