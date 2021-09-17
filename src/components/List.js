@@ -39,6 +39,7 @@ const List = () => {
           padding: "15px",
           marginRight: "10px",
           marginTop: "20px",
+          backgroundColor:"#fff"
         }}
       >
         <h3>Name: {user.username}</h3>

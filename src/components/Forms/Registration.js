@@ -12,7 +12,7 @@ const Registration = ({ setData }) => {
     width: "300px",
     padding: "20px",
     border: "1px solid #eee",
-    backgroundColor: "#fab",
+    backgroundColor: "#eae8e8",
   };
 
   const inputStyle = {
