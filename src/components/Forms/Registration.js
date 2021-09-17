@@ -38,15 +38,21 @@ const Registration = ({ setData }) => {
     }
   };
 
-  const create = async (e) => {
+  const create = async (e, base64EncodedImage) => {
     e.preventDefault();
+
     const response = await fetch("http://localhost:9000/new-data", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username: username, car: car, price: price }),
+      body: JSON.stringify({
+        username: username,
+        car: car,
+        price: price,
+        image: base64EncodedImage,
+      }),
     });
     response.json().then((data) => {
       setData(data.message);
@@ -61,7 +67,6 @@ const Registration = ({ setData }) => {
   const previewFile = (file) => {
     const reader = new FileReader();
     reader.onload = (evt) => {
-      console.log(reader.result, "event");
       setPreviewSource(reader.result);
     };
     reader.readAsDataURL(file);
@@ -70,7 +75,7 @@ const Registration = ({ setData }) => {
   return (
     <div style={registerStyle}>
       <h4>Register new car</h4>
-      <form onSubmit={create}>
+      <form onSubmit={(e) => create(e, previewSource)}>
         <label>
           Username:
           <input

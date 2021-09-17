@@ -42,9 +42,10 @@ const List = () => {
         }}
       >
         <h3>Name: {user.username}</h3>
-        <h3>
-          {user.car}-{user.price}
-        </h3>
+        <h3>Model: {user.car}</h3>
+
+        <h3>Price: {user.price}</h3>
+        <img style={{ width: "100%" }} src={user.image} alt={user.username} />
         <button onClick={() => deleteItem(user._id)}>Delete</button>
         <button
           onClick={() => {
