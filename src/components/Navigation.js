@@ -13,8 +13,11 @@ const Navigation = ({ logged, setLogged }) => {
   );
 
   return (
-    <div>
-      <ul>{logged ? logout : login}</ul>
+    <div className="navigation">
+      <ul className="nav-ul">
+        <li>Home</li>
+        {logged ? logout : login}
+      </ul>
     </div>
   );
 };

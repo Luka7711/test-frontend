@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import CategoryLinks from "./components/CategoryLinks";
+import BrowseAll from "./components/BrowseAll";
+import SideMenu from "./components/SideMenu";
 import axios from "axios";
 import Category from "./components/Category";
+import "./App.css";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -26,19 +26,22 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <Navigation logged={logged} setLogged={setLogged} />
-      <Profile />
-      <CategoryLinks />
-      <Switch>
-        <Route exact path="/">
-          <Home products={products.data} />
-        </Route>
-        <Route path="/listby">
-          <Category products={listByCategory} />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+        <Navigation logged={logged} setLogged={setLogged} />
+        <Switch>
+          <Route exact path="/">
+            <div style={{ display: "flex", marginTop: "50px" }}>
+              <SideMenu />
+              <BrowseAll products={products.data} />
+            </div>
+          </Route>
+          <Route path="/listby">
+            <Category products={listByCategory} />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 };
 

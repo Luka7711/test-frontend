@@ -1,13 +1,13 @@
 import Category from "./Category";
 
-const Home = ({ products }) => {
+const BrowseAll = ({ products }) => {
   let productList = [];
   for (let product in products) {
     productList.push(
       <Category key={product} category={product} products={products[product]} />
     );
   }
-  return <div>{productList}</div>;
+  return <div className="main-container">{productList}</div>;
 };
 
-export default Home;
+export default BrowseAll;
