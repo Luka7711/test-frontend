@@ -4,8 +4,7 @@ const Registration = ({ setData }) => {
   const [username, setUsername] = useState("");
   const [car, setCar] = useState("");
   const [price, setPrice] = useState(0);
-  const [fileInputState, setFileInputState] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
+  const fileInputState = "";
   const [previewSource, setPreviewSource] = useState();
 
   const registerStyle = {
