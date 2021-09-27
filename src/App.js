@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import BrowseAll from "./components/BrowseAll";
-import SideMenu from "./components/SideMenu";
 import axios from "axios";
 import Category from "./components/Category";
 import "./App.css";
+import Register from "./components/Forms/Register";
+import Home from "./components/Home";
+
+const Space = () => {
+  return <div style={{ marginTop: "50px" }}></div>;
+};
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [logged, setLogged] = useState(false);
   const [listByCategory, setListByCategory] = useState([]);
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     getProducts();
   }, []);
+
+  useEffect(() => {
+    console.log(userId);
+  });
 
   const getProducts = async () => {
     try {
@@ -29,16 +38,25 @@ const App = () => {
     <div className="App">
       <Router>
         <Navigation logged={logged} setLogged={setLogged} />
+        <Space />
         <Switch>
-          <Route exact path="/">
-            <div style={{ display: "flex", marginTop: "50px" }}>
-              <SideMenu />
-              <BrowseAll products={products.data} />
-            </div>
-          </Route>
-          <Route path="/listby">
-            <Category products={listByCategory} />
-          </Route>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Home logged={logged} setLogged={setLogged} products={products} />
+            )}
+          />
+          <Route
+            path="/listby"
+            render={() => <Category products={listByCategory} />}
+          />
+          <Route
+            path="/browse/createaccount"
+            render={() => (
+              <Register setLogged={setLogged} setUserId={setUserId} />
+            )}
+          />
         </Switch>
       </Router>
     </div>

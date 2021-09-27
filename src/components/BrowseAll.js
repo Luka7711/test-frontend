@@ -1,6 +1,8 @@
 import Category from "./Category";
 
 const BrowseAll = ({ products }) => {
+  // console.log(products, "productssss");
+  // return <div></div>;
   let productList = [];
   for (let product in products) {
     productList.push(

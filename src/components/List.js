@@ -18,7 +18,7 @@ const List = () => {
 
   const getData = async () => {
     const response = await axios.get("http://localhost:9000/get-ads");
-    setData(response.data.data);
+    setData(response.data);
   };
 
   const deleteItem = async (id) => {

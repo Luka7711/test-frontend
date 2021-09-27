@@ -1,0 +1,38 @@
+.input-name {
+  width: 270px;
+}
+
+.input-all {
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+.signup-container {
+  display: flex;
+}
+
+.signup-form {
+  width: 600px;
+  margin: 100px auto;
+}
+
+.image-container {
+  width: 1100px;
+}
+
+.signup-btn {
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  background: #1b8517;
+  color: #fff;
+}
+
+.signup-btn:hover {
+  cursor: pointer;
+}

@@ -26,7 +26,7 @@ const Category = ({ products, category }) => {
   });
   return (
     <div className="product-box">
-      <h4>{category}</h4>
+      <h4>{category.toUpperCase()}</h4>
       <ul style={{ display: "flex" }}>{someList}</ul>
     </div>
   );
