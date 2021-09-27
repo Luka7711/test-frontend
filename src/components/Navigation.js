@@ -39,7 +39,14 @@ const Navigation = ({ logged, setLogged }) => {
   const logout = (
     <div style={{ display: "flex" }}>
       <li>Profile</li>
-      <li onClick={() => setLogged(false)}>Logout</li>
+      <li
+        onClick={() => {
+          setLogged(false);
+          history.push("/");
+        }}
+      >
+        Logout
+      </li>
     </div>
   );
   const login = (

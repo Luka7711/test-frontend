@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
 
-const VerticalList = ({ links }) => {
+const VerticalList = ({ links, header }) => {
   let history = useHistory();
   const list = links.map((link, i) => {
     let url = link.toLowerCase().split(" ").join("");
