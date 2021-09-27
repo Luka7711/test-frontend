@@ -6,6 +6,7 @@ import Category from "./components/Category";
 import "./App.css";
 import Register from "./components/Forms/Register";
 import Home from "./components/Home";
+import Create from "./components/Create";
 
 const Space = () => {
   return <div style={{ marginTop: "50px" }}></div>;
@@ -57,6 +58,7 @@ const App = () => {
               <Register setLogged={setLogged} setUserId={setUserId} />
             )}
           />
+          <Route path="/browse/createnewlisting" render={() => <Create />} />
         </Switch>
       </Router>
     </div>
