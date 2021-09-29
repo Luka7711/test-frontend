@@ -7,6 +7,8 @@ import "./App.css";
 import Register from "./components/Forms/Register";
 import Home from "./components/Home";
 import Create from "./components/Create";
+import ProductForm from "./components/Forms/ProductForm";
+import Test from "./components/Forms/Test";
 
 const Space = () => {
   return <div style={{ marginTop: "50px" }}></div>;
@@ -59,6 +61,22 @@ const App = () => {
             )}
           />
           <Route path="/browse/createnewlisting" render={() => <Create />} />
+          <Route
+            path="/browse/create/product"
+            render={() => <ProductForm productCategory={"product"} />}
+          />
+          <Route
+            path="/browse/create/car"
+            render={() => <ProductForm productCategory={"car"} />}
+          />
+          <Route
+            path="/browse/create/property"
+            render={() => <ProductForm productCategory={"property"} />}
+          />
+          <Route
+            path="/browse/create/job"
+            render={() => <ProductForm productCategory={"job"} />}
+          />
         </Switch>
       </Router>
     </div>

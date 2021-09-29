@@ -4,6 +4,7 @@
 }
 
 .main-sidebar {
+  padding: 10px;
   width: 350px;
   background: black;
   overflow-y: scroll;

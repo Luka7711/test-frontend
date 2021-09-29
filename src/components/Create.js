@@ -3,6 +3,7 @@ import logo from "../imgs/product.png";
 import carLogo from "../imgs/car.png";
 import houseLogo from "../imgs/home.png";
 import jobLogo from "../imgs/suitcase.png";
+import { useHistory } from "react-router";
 
 const boxContainer = {
   display: "flex",
@@ -31,6 +32,8 @@ const imgs = [logo, carLogo, houseLogo, jobLogo];
 
 const Create = () => {
   const links = ["your listings"];
+  let history = useHistory();
+
   const header = (
     <>
       <h2>Create new listing</h2>
@@ -52,9 +55,15 @@ const Create = () => {
     "Post a job opportunity for public.",
   ];
 
+  const path = ["product", "car", "property", "job"];
+
   const items = headers.map((item, index) => {
     return (
-      <div style={box}>
+      <div
+        key={index}
+        style={box}
+        onClick={() => history.push(`/browse/create/${path[index]}`)}
+      >
         <div style={content}>
           <h3>{item}</h3>
           <p>{description[index]}</p>
