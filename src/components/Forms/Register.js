@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import "./SignForm.css";
 
@@ -41,7 +41,10 @@ const Register = ({ setLogged, setUserId }) => {
   return (
     <div className="signup-container">
       <div className="image-container">
-        <img src="https://craftindustryalliance.org/wp-content/uploads/2016/06/computer-to-shopping-cart-comic.png" />
+        <img
+          src="https://craftindustryalliance.org/wp-content/uploads/2016/06/computer-to-shopping-cart-comic.png"
+          alt="main-img"
+        />
       </div>
       <form onSubmit={handleSubmit} className="signup-form">
         <div>

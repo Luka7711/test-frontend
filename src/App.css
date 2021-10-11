@@ -1,6 +1,6 @@
 .main-container {
   width: 1550px;
-  margin-left: 350px;
+  /* margin-left: 350px; */
 }
 
 .main-sidebar {
@@ -9,9 +9,9 @@
   background: black;
   overflow-y: scroll;
   color: white;
-  height: 100%;
+  height: 100vh;
   scrollbar-width: 1px;
-  position: fixed;
+  /* position: fixed; */
   top: 50px;
 }
 
@@ -81,4 +81,8 @@ li {
 textarea:focus,
 select:focus {
   outline: none;
+}
+
+.img-box:hover {
+  cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import axios from "axios";
 import Category from "./components/Category";
@@ -8,7 +8,6 @@ import Register from "./components/Forms/Register";
 import Home from "./components/Home";
 import Create from "./components/Create";
 import ProductForm from "./components/Forms/ProductForm";
-import Test from "./components/Forms/Test";
 
 const Space = () => {
   return <div style={{ marginTop: "50px" }}></div>;
@@ -23,10 +22,6 @@ const App = () => {
   useEffect(() => {
     getProducts();
   }, []);
-
-  useEffect(() => {
-    console.log(userId);
-  });
 
   const getProducts = async () => {
     try {

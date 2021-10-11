@@ -1,4 +1,6 @@
-const InputList = ({ inputs }) => {
+import PhotoBox from "./PhotoBox";
+
+const InputCar = ({ inputs }) => {
   let contentList = inputs.map((property, index) => {
     let inputForms = property.inputs.map((element, i) => {
       return (
@@ -21,7 +23,7 @@ const InputList = ({ inputs }) => {
     return header;
   });
   return (
-    <div>
+    <div className="main-sidebar">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -29,10 +31,11 @@ const InputList = ({ inputs }) => {
         }}
       >
         {contentList}
+        <PhotoBox />
         <input type="submit" />
       </form>
     </div>
   );
 };
 
-export default InputList;
+export default InputCar;

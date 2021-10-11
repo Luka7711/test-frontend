@@ -1,5 +1,7 @@
-import InputList from "../Inputs/InputList";
-import { useState } from "react";
+import InputJob from "../Inputs/InputJob";
+import InputCar from "../Inputs/InputCar";
+import InputProduct from "../Inputs/InputProduct";
+import InputProperty from "../Inputs/InputProperty";
 
 const ProductForm = ({ productCategory }) => {
   const itemInputs = [
@@ -86,30 +88,18 @@ const ProductForm = ({ productCategory }) => {
     },
   ];
 
-  let currentInput;
-
   switch (productCategory) {
     case "product":
-      currentInput = itemInputs;
-      break;
+      return <InputProduct inputs={itemInputs} />;
     case "job":
-      currentInput = jobInputs;
-      break;
+      return <InputJob inputs={jobInputs} />;
     case "car":
-      currentInput = carInputs;
-      break;
+      return <InputCar inputs={carInputs} />;
     case "property":
-      currentInput = propertyInputs;
-      break;
+      return <InputProperty inputs={propertyInputs} />;
     default:
-      console.log("out of choice");
+      console.log("Hello");
   }
-
-  return (
-    <div className="main-sidebar">
-      <InputList inputs={currentInput} />
-    </div>
-  );
 };
 
 export default ProductForm;
