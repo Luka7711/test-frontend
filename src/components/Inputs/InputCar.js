@@ -1,26 +1,30 @@
-import PhotoBox from "./PhotoBox";
+import { useState, useEffect } from 'react';
+import PhotoBox from './PhotoBox';
 
 const InputCar = ({ inputs }) => {
-  const handleChange = (e) => {
+  const handleChange = e => {
     console.log(e.target.value);
   };
 
+  useEffect(() => {
+    console.log(inputs);
+  });
+
   let contentList = inputs.map((property, index) => {
     let inputForms = property.inputs.map((element, i) => {
-      console.log(property, "property");
       return (
         <div key={i + 10}>
-          {property.title !== "Description" ? (
+          {property.title !== 'Description' ? (
             <input
-              className="input-all"
+              className='input-all'
               type={element.type}
               placeholder={element.input}
               onChange={handleChange}
             />
           ) : (
             <textarea
-              className="textarea"
-              placeholder="Write about the product"
+              className='textarea'
+              placeholder='Write about the product'
             />
           )}
         </div>
@@ -36,16 +40,16 @@ const InputCar = ({ inputs }) => {
     return header;
   });
   return (
-    <div className="main-sidebar">
+    <div className='main-sidebar'>
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
-          console.log("submitted");
+          console.log('submitted');
         }}
       >
         {contentList}
         <PhotoBox />
-        <input type="submit" />
+        <input type='submit' />
       </form>
     </div>
   );
